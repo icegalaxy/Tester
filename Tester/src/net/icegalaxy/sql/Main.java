@@ -8,7 +8,7 @@ public class Main
 		SQLite sql = new SQLite("AutoTradeTest");
 		sql.attachDB("AutoTrade");
 
-		String copyTable = "HSF161028";
+		String copyTable = "HSF161115";
 
 		try
 		{
