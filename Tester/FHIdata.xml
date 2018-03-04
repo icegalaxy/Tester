@@ -855,7 +855,7 @@
 	 <OHLC>
         <date> 170203 </date>
         <pOpen> 23270 </pOpen>
-        <pHigh> 23404 </pHigh>
+        <pHigh><position>23404</position><stopEarn>23405</stopEarn><cutLoss>23403</cutLoss></pHigh>
         <pLow> 23048 </pLow>
         <pClose> 23127 </pClose>
         <pEMA5>  </pEMA5>

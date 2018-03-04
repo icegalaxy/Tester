@@ -1,0 +1,3 @@
+LineType,Value,CutLoss,Buying,Selling,Re-Active Time,Shutdown
+Power,30000.0,10.0,true,true,100000,false
+Power,30000.0,10.0,true,true,100000,false

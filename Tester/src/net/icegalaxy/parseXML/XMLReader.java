@@ -34,6 +34,10 @@ public class XMLReader
 	double pEMA100;
 	double pEMA250;
 	double pEMA1200;
+	
+	public double position;
+	public double stopEarn;
+	public double cutLoss;
 
 	boolean stop;
 	Element eElement;
@@ -92,14 +96,36 @@ public class XMLReader
 		}
 
 	}
+	
+	
 
 	public void findOHLC()
 	{
 
 		setpOpen(Double.parseDouble(eElement.getElementsByTagName("pOpen").item(0).getTextContent()));
-		setpHigh(Double.parseDouble(eElement.getElementsByTagName("pHigh").item(0).getTextContent()));
+		
 		setpLow(Double.parseDouble(eElement.getElementsByTagName("pLow").item(0).getTextContent()));
 		setpClose(Double.parseDouble(eElement.getElementsByTagName("pClose").item(0).getTextContent()));
+		
+		System.out.println("Nodes Length: " + eElement.getElementsByTagName("pHigh").item(0).getChildNodes().getLength());
+		
+		
+		
+		
+		
+		Node childNode = eElement.getElementsByTagName("pHigh").item(0).getFirstChild();    
+		
+		while( childNode.getNextSibling()!=null )
+		{
+			childNode = childNode.getNextSibling(); 
+		System.out.println("childNode: " + childNode.getTextContent());
+
+		}
+		position = Double.parseDouble(eElement.getElementsByTagName("pHigh").item(0).getChildNodes().item(0).getTextContent());
+		stopEarn = Double.parseDouble(eElement.getElementsByTagName("pHigh").item(0).getChildNodes().item(1).getTextContent());
+		cutLoss = Double.parseDouble(eElement.getElementsByTagName("pHigh").item(0).getChildNodes().item(2).getTextContent());
+				
+		
 		// setpFluc(Double.parseDouble(eElement.getElementsByTagName("pFluc").item(0).getTextContent()));
 		// setAOH(Double.parseDouble(eElement.getElementsByTagName("AOH").item(0).getTextContent()));
 		// setAOL(Double.parseDouble(eElement.getElementsByTagName("AOL").item(0).getTextContent()));
