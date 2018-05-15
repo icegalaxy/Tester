@@ -11,6 +11,8 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class XMLReader
 {
@@ -101,6 +103,26 @@ public class XMLReader
 
 	public void findOHLC()
 	{
+		
+		String callerClassName = new Exception().getStackTrace()[1].getClassName();
+		String calleeClassName = new Exception().getStackTrace()[0].getClassName();
+		
+		System.out.println("Caller: " + callerClassName);
+		System.out.println("Callee: " + calleeClassName);
+		
+//		Pattern pat = Pattern.compile("\\b\\w+@XYZ\\.com\\b");
+//
+//	    Matcher mat = pat.matcher("t@XYZ.com\n" + "a@XYZ.com\n"
+//	        + "n@XYZ.com");
+//
+//	    while (mat.find())
+//	      System.out.println("Match: " + mat.group());
+		
+		Pattern pat = Pattern.compile(".*\\.(.*)$");
+		Matcher matcher = pat.matcher(callerClassName);
+		
+		while (matcher.find())
+			System.out.println("Caller regex: " + matcher.group(1));
 
 		setpOpen(Double.parseDouble(eElement.getElementsByTagName("pOpen").item(0).getTextContent()));
 		
